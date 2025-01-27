@@ -1,49 +1,46 @@
 import os
 
-def getListOfFilesFromFolder():
+def getTextFiles():
     folderPath = input('Please enter the path of the folder you wish to open: ')
     os.chdir(folderPath)
 
     listOfFiles = list(os.listdir(folderPath))
-    
-    return listOfFiles
 
-def filterForTextFiles(listOfFiles):
-    listOfTextFiles = []
+    textFiles = []
 
     for file in listOfFiles:
         if str(file).endswith('.txt'):
-            listOfTextFiles.append(file)
+            textFiles.append(file)
+    
+    return textFiles
 
-    return listOfTextFiles
+def replaceTextInFile(textFile, searchWord, replacementWord):
+    newTextContents = ''
 
-def replaceTextInFile(textDoc, searchWord, replacementWord):
-    with open(textDoc, 'r+') as file:
+    with open(textFile, 'r') as file:
         textContents = file.read()
         numOfReplacements = textContents.count(searchWord)
 
         newTextContents = textContents.replace(searchWord, replacementWord)
+        
+    with open(textFile, 'w') as file:
         file.write(newTextContents)
         
 
     return numOfReplacements
 
-def main():
-    fileList = getListOfFilesFromFolder()
-    
-    listOfTextFiles = filterForTextFiles(fileList)
+def main():   
+    textFiles = getTextFiles()
 
-    print(f'Number of files with .txt extension: {len(listOfTextFiles)}')
+    print(f'Number of files with .txt extension: {len(textFiles)}')
 
     searchWord = input('What word would you like to replace: ')
     replacementWord = input('What word would you like to replace that with: ')
     totalReplacementsMade = 0
 
-    for textFile in listOfTextFiles:
+    for textFile in textFiles:
         numOfReplacements = replaceTextInFile(textFile, searchWord, replacementWord)
         print(f'Replacements made: {numOfReplacements}')
         totalReplacementsMade += numOfReplacements
 
-    
 main()
-
