@@ -1,6 +1,7 @@
 import pathlib
 
-textFileFolder = pathlib.Path('C:\Temporary Workspace\IP-A2')
+folderPath = input('Please enter the path of the folder you wish to open:')
+textFileFolder = pathlib.Path(folderPath)
 
 listOfFiles = list(textFileFolder.iterdir())
 print(listOfFiles)
