@@ -6,7 +6,7 @@ def getDistance():
     while not (distanceKM > 0):
         distanceKM = input('\nPlease enter the delivery distance (kilometres): ')
 
-        try:
+        try: # if a user enters a non integer input then it won't cast to int and will ask for another input
             return int(distanceKM)
         except:
             print('Error: you may only input numbers')
@@ -92,16 +92,17 @@ def main():
         listOfVehicles = [van, lorry, barge] # list of dictionaries
         cheapestVehicle = getCheapestVehicle(listOfVehicles)
 
+        # format methods below reference dictionaries containing keys 'name' and 'cost'
+        # format was more concise than f strings due to string containing several keys
         if int(choice) == 1:
-            print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) # references dictionary containing keys 'name' and 'cost'
-        elif int(choice) == 2:
+            print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) 
             for vehicle in listOfVehicles:
-                print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) # references dictionary containing keys 'name' and 'cost'
+                print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) 
         elif int(choice) == 3:
             for vehicle in listOfVehicles:
-                print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) # references dictionary containing keys 'name' and 'cost'
+                print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) 
 
-            print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) # references dictionary containing keys 'name' and 'cost'  
+            print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) 
         
-        time.sleep(10)
+        time.sleep(10) # provides the user time to read info
 main()
