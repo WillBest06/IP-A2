@@ -1,14 +1,14 @@
-import fuelCalculator, nameReplacement
+import cheapestVehicle, wordReplacement
 
 print('Select an option:')
-print('1) fuel calculator')
-print('2) word replacement')
+print('1) Find the cheapest transport vehicle')
+print('2) Replace words in text files')
 
 choice = int(input('Choice: '))
 
 if choice == 1:
-    fuelCalculator.main()
+    cheapestVehicle.main()
 elif choice == 2:
-    nameReplacement.main()
+    wordReplacement.main()
 else:
     print('Error')

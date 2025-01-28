@@ -1,4 +1,4 @@
-import sys, time
+import time
 
 def getDistance():
     distanceKM = 0
@@ -67,7 +67,7 @@ def main():
         choice = input('\nYour choice: ')
 
         if choice == 'e' or choice == 'E':
-            sys.exit(0)
+            return
 
         distance = getDistance()
         vanCost = calcVanCost(distance)
