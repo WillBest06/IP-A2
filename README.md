@@ -1,1 +1,1 @@
-# IP-A2
+Python files and text files for Introductory Programming Assignment 2
