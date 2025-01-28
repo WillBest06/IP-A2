@@ -6,8 +6,8 @@ def getDistance():
     while not (distanceKM > 0):
         distanceKM = input('\nPlease enter the delivery distance (kilometres): ')
 
-        try: # if a user enters a non integer input then it won't cast to int and will ask for another input
-            return int(distanceKM)
+        try: # if a user enters a non float input then it won't cast to int and will ask for another input
+            return float(distanceKM)
         except:
             print('Error: you may only input numbers')
             distanceKM = 0
