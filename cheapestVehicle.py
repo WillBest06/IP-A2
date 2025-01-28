@@ -96,8 +96,11 @@ def main():
         # format was more concise than f strings due to string containing several keys
         if int(choice) == 1:
             print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) 
+            
+        elif int(choice) == 2:
             for vehicle in listOfVehicles:
                 print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) 
+        
         elif int(choice) == 3:
             for vehicle in listOfVehicles:
                 print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) 
