@@ -32,6 +32,10 @@ def replaceTextInFile(textFile, searchWord, replacementWord):
 def main():   
     textFiles = getTextFiles()
 
+    if not textFiles:
+        print('No text files were found. Please enter a different folder path.')
+        main()
+
     print(f'Number of files with .txt extension: {len(textFiles)}')
 
     searchWord = input('What word would you like to replace: ')
@@ -40,7 +44,8 @@ def main():
 
     for textFile in textFiles:
         numOfReplacements = replaceTextInFile(textFile, searchWord, replacementWord)
-        print(f'Replacements made: {numOfReplacements}')
+        print(f'Replacements made in {textFile}: {numOfReplacements}')
         totalReplacementsMade += numOfReplacements
 
+    print(f'Total replacements made: {totalReplacementsMade}')
 main()
