@@ -1,7 +1,7 @@
 import os
 
 def getTextFiles():
-    folderPath = input('Please enter the path of the folder you wish to open: ')
+    folderPath = input('\nPlease enter the path of the folder you wish to open: ')
     os.chdir(folderPath)
 
     listOfFiles = list(os.listdir(folderPath))
@@ -33,18 +33,18 @@ def main():
     textFiles = getTextFiles()
 
     if not textFiles:
-        print('No text files were found. Please enter a different folder path.')
+        print('\nNo text files were found. Please enter a different folder path.')
         main()
 
-    print(f'Number of files with .txt extension: {len(textFiles)}')
+    print(f'\nText files found: {len(textFiles)}')
 
-    searchWord = input('What word would you like to replace: ')
+    searchWord = input('\nWhat word would you like to replace: ')
     replacementWord = input('What word would you like to replace that with: ')
     totalReplacementsMade = 0
 
     for textFile in textFiles:
         numOfReplacements = replaceTextInFile(textFile, searchWord, replacementWord)
-        print(f'Replacements made in {textFile}: {numOfReplacements}')
+        print(f'\nReplacements made in {textFile}: {numOfReplacements}')
         totalReplacementsMade += numOfReplacements
 
     print(f'Total replacements made: {totalReplacementsMade}')
