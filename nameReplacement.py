@@ -48,4 +48,6 @@ def main():
         totalReplacementsMade += numOfReplacements
 
     print(f'Total replacements made: {totalReplacementsMade}')
-main()
+
+if __name__ == "__main__":
+    main()

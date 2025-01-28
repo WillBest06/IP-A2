@@ -105,4 +105,6 @@ def main():
             print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) 
         
         time.sleep(10) # provides the user time to read info
-main()
+
+if __name__ == "__main__":
+    main()
