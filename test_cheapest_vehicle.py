@@ -1,20 +1,21 @@
 import cheapestVehicle, unittest
 
 class testCheapestVehicle(unittest.TestCase):
-    def testCalcVanCost(self):
-        self.assertEqual(cheapestVehicle.calcVanCost(0), 37)
-        self.assertEqual(cheapestVehicle.calcVanCost(100), 47)
-        self.assertEqual(cheapestVehicle.calcVanCost(100.44), 47.04)
+    def testCalcVehicleCost(self):
+        # van
+        self.assertEqual(cheapestVehicle.calcVehicleCost(0, 37, 10, 1, 1), 37) 
+        self.assertEqual(cheapestVehicle.calcVehicleCost(100, 37, 10, 1, 1), 47)
+        self.assertEqual(cheapestVehicle.calcVehicleCost(100.44, 37, 10, 1, 1), 47.04)
 
-    def testCalcLorryCost(self):
-        self.assertEqual(cheapestVehicle.calcLorryCost(0), 47)
-        self.assertEqual(cheapestVehicle.calcLorryCost(100), 52.33)
-        self.assertEqual(cheapestVehicle.calcLorryCost(100.44), 52.35)
+        # lorry 
+        self.assertEqual(cheapestVehicle.calcVehicleCost(0, 47, 53, 1, 0.354006), 47)
+        self.assertEqual(cheapestVehicle.calcVehicleCost(100, 47, 53, 1, 0.354006), 52.33)
+        self.assertEqual(cheapestVehicle.calcVehicleCost(100.44, 47, 53, 1, 0.354006), 52.35)
 
-    def testBargeLorryCost(self):
-        self.assertEqual(cheapestVehicle.calcBargeCost(0), 47)
-        self.assertEqual(cheapestVehicle.calcBargeCost(100), 51.63)
-        self.assertEqual(cheapestVehicle.calcBargeCost(100.44), 51.65)
+        # barge
+        self.assertEqual(cheapestVehicle.calcVehicleCost(0, 47, 78, 1, 0.4074), 47)
+        self.assertEqual(cheapestVehicle.calcVehicleCost(100, 47, 78, 1, 0.4074), 50.15)
+        self.assertEqual(cheapestVehicle.calcVehicleCost(100.44, 47, 78, 1, 0.4074), 50.16)
 
     def testGetCheapestVehicle(self):  
         listOfVehicles = [
