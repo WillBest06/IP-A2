@@ -41,7 +41,7 @@ def main():
     LORRY_MPG_TO_KML_RATIO = 0.354006
 
     BARGE_BASE_COST = 47  # price in £
-    BARGE_FUEL_CONSUMPTION_NMPG = 53 # nautical miles/gallon
+    BARGE_FUEL_CONSUMPTION_NMPG = 78 # nautical miles/gallon
     BARGE_NMPG_TO_KML_RATIO = 0.4074
 
     print('\n*** Fuel Calculator V1.0 ***')
@@ -56,7 +56,7 @@ def main():
             print('Exiting...')
             time.sleep(1)
             return
-        elif int(choice) == 1:
+        elif choice.isdigit() and int(choice) == 1:
             distance = getDistance()
             vanCost = calcVehicleCost(distance, VAN_BASE_COST, VAN_FUEL_CONSUMPTION, ONE_LITRE_FUEL_COST, VAN_KML_TO_KML_RATIO)
             lorryCost = calcVehicleCost(distance, LORRY_BASE_COST, LORRY_FUEL_CONSUMPTION_MPG, ONE_LITRE_FUEL_COST, LORRY_MPG_TO_KML_RATIO)
