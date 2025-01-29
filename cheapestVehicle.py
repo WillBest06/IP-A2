@@ -53,6 +53,8 @@ def main():
         choice = input('\nYour choice: ')
 
         if choice.lower() == 'e':
+            print('Exiting...')
+            time.sleep(1)
             return
         elif int(choice) == 1:
             distance = getDistance()
