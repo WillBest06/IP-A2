@@ -20,10 +20,10 @@ def calcVehicleCost(distance, baseCost, fuelConsumption, oneLitreFuelCost, metri
 
     return round(vehicleTotalCost, 2)
 
-def getCheapestVehicle(listOfVehicles):
-    cheapestVehicle = listOfVehicles[0] # initialises with the 1st value to compare against the others
+def getCheapestVehicle(vehicles):
+    cheapestVehicle = vehicles[0] # initialisation to compare against others
 
-    for currentVehicle in listOfVehicles:
+    for currentVehicle in vehicles:
         if currentVehicle['cost'] < cheapestVehicle['cost']:
             cheapestVehicle = currentVehicle
 
@@ -32,17 +32,11 @@ def getCheapestVehicle(listOfVehicles):
 def main():
     ONE_LITRE_FUEL_COST = 1 # price in £
 
-    VAN_BASE_COST = 37  # price in £
-    VAN_FUEL_CONSUMPTION = 10 # kilometres/Litre
-    VAN_KML_TO_KML_RATIO = 1
-
-    LORRY_BASE_COST = 47  # price in £
-    LORRY_FUEL_CONSUMPTION_MPG = 53 # miles/gallon
-    LORRY_MPG_TO_KML_RATIO = 0.354006
-
-    BARGE_BASE_COST = 47  # price in £
-    BARGE_FUEL_CONSUMPTION_NMPG = 78 # nautical miles/gallon
-    BARGE_NMPG_TO_KML_RATIO = 0.4074
+    vehicles = [ # conversion ratio * fuel consumption is fuel consumption in km/l
+                {'name': 'Van', 'base_cost_pounds': 37, 'fuel_consumption': 10, 'conversion_ratio': 1}, # consumption in km/l
+                {'name': 'Lorry', 'base_cost_pounds': 47, 'fuel_consumption': 53, 'conversion_ratio': 0.354006}, # consumption in mpg
+                {'name': 'Barge', 'base_cost_pounds': 47, 'fuel_consumption': 78, 'conversion_ratio': 0.4074} # consumption in nmpg
+            ]
 
     print('\n*** Fuel Calculator V1.0 ***')
 
@@ -56,37 +50,24 @@ def main():
             print('Exiting...')
             time.sleep(1)
             return
-        elif choice.isdigit() and int(choice) == 1:
+        elif choice == '1':
             distance = getDistance()
-            vanCost = calcVehicleCost(distance, VAN_BASE_COST, VAN_FUEL_CONSUMPTION, ONE_LITRE_FUEL_COST, VAN_KML_TO_KML_RATIO)
-            lorryCost = calcVehicleCost(distance, LORRY_BASE_COST, LORRY_FUEL_CONSUMPTION_MPG, ONE_LITRE_FUEL_COST, LORRY_MPG_TO_KML_RATIO)
-            bargeCost = calcVehicleCost(distance, BARGE_BASE_COST, BARGE_FUEL_CONSUMPTION_NMPG, ONE_LITRE_FUEL_COST, BARGE_NMPG_TO_KML_RATIO )
 
-            van = {
-                'name': 'Van',
-                'cost': vanCost
-            }
-
-            lorry = {
-                'name': 'Lorry',
-                'cost': lorryCost
-            }
-
-            barge = {
-                'name': 'Barge',
-                'cost': bargeCost
-            }
+            for vehicle in vehicles: # creates new key total_cost
+                vehicle['total_cost'] = calcVehicleCost(
+                    distance, vehicle['base_cost'], vehicle['fuel_consumption'],
+                    ONE_LITRE_FUEL_COST, vehicle['conversion_ratio']
+                )
             
-            listOfVehicles = [van, lorry, barge] # list of dictionaries
-            cheapestVehicle = getCheapestVehicle(listOfVehicles)
+            cheapestVehicle = getCheapestVehicle(vehicles)
 
             # format methods below reference dictionaries containing keys 'name' and 'cost'
             # format was more concise than f strings due to string containing several keys
                 
-            for vehicle in listOfVehicles:
-                print('\n| Vehicle type: {name} | Cost: £{cost} |'.format(**vehicle)) 
+            for vehicle in vehicles:
+                print('\n| Vehicle type: {name} | Cost: £{total_cost} |'.format(**vehicle)) 
 
-            print('\nThe cheapest vehicle is {name}, at a cost of £{cost}'.format(**cheapestVehicle)) 
+            print('\nThe cheapest vehicle is {name}, at a cost of £{total_cost}'.format(**cheapestVehicle)) 
             
             time.sleep(10) # provides the user time to read info
         else:
