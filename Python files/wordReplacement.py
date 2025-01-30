@@ -11,7 +11,7 @@ def getTextFiles():
     for file in listOfFiles:
         if str(file).endswith('.txt'): # filters out non-text files
             textFiles.append(file)
-    
+
     return textFiles
 
 def replaceTextInFile(textFile, searchWord, replacementWord):
