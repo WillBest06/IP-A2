@@ -9,7 +9,11 @@ def getDistance():
         try: # if a user enters a non float input then it won't cast to int and will ask for another input
             return float(distanceKM)
         except:
-            print('Error: you may only input numbers')
+            if distanceKM <= 0:
+                print('Error: distance must be greater than 0.')
+            else:
+                print('Error: you may only input numbers.')
+            
             distanceKM = 0
             continue
 
@@ -24,7 +28,7 @@ def getCheapestVehicle(vehicles):
     cheapestVehicle = vehicles[0] # initialisation to compare against others
 
     for currentVehicle in vehicles:
-        if currentVehicle['cost'] < cheapestVehicle['cost']:
+        if currentVehicle['total_cost'] < cheapestVehicle['total_cost']:
             cheapestVehicle = currentVehicle
 
     return cheapestVehicle
@@ -55,7 +59,7 @@ def main():
 
             for vehicle in vehicles: # creates new key total_cost
                 vehicle['total_cost'] = calcVehicleCost(
-                    distance, vehicle['base_cost'], vehicle['fuel_consumption'],
+                    distance, vehicle['base_cost_pounds'], vehicle['fuel_consumption'],
                     ONE_LITRE_FUEL_COST, vehicle['conversion_ratio']
                 )
             
