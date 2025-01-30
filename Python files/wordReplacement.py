@@ -22,6 +22,7 @@ def replaceTextInFile(textFile, searchWord, replacementWord):
         numOfReplacements = textContents.count(searchWord) # instances of word to be replaced
 
         newTextContents = textContents.replace(searchWord, replacementWord) # does not edit file
+     
         
     with open(textFile, 'w') as file:
         file.write(newTextContents) # overwrites file with text replaced
@@ -33,6 +34,10 @@ def main():
     try:
         textFiles = getTextFiles()
     except:
+        print('\nError: Path could not be found.')
+        main()
+
+    if len(textFiles) == 0:
         print('\nNo text files were found. Please enter a different folder path.')
         main()
 
