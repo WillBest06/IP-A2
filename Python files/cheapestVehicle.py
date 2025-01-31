@@ -4,18 +4,19 @@ def getDistance():
     distanceKM = 0
 
     while not (distanceKM > 0):
-        distanceKM = input('\nPlease enter the delivery distance (kilometres): ')
-
-        try: # if a user enters a non float input then it won't cast to int and will ask for another input
-            return float(distanceKM)
+        try: # if a user enters a non float input then it won't cast to float and will ask for another input
+            distanceKM = float(input('\nPlease enter the delivery distance (kilometres): '))
         except:
-            if distanceKM <= 0:
-                print('Error: distance must be greater than 0.')
-            else:
-                print('Error: you may only input numbers.')
-            
+            print('Error: you may only input numbers.')
             distanceKM = 0
             continue
+        
+        if distanceKM <= 0:
+            print('Error: distance must be greater than 0.')
+            distanceKM = 0
+            continue
+
+        return float(distanceKM)
 
 def calcVehicleCost(distance, baseCost, fuelConsumption, oneLitreFuelCost, metricConversionRatio):
     KMLfuelConsumption = fuelConsumption * metricConversionRatio
