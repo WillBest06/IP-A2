@@ -18,23 +18,23 @@ class testCheapestVehicle(unittest.TestCase):
         self.assertEqual(cheapestVehicle.calcVehicleCost(100.44, 47, 78, 1, 0.4074), 50.16)
 
     def testGetCheapestVehicle(self):  
-        listOfVehicles = [
-            {'name': 'Van', 'cost': 100},
-            {'name': 'Lorry', 'cost': 200},
-            {'name': 'Barge', 'cost': 220}
-        ]
-        self.assertEqual(cheapestVehicle.getCheapestVehicle(listOfVehicles), {'name': 'Van', 'cost': 100})
+        vehicles = [ 
+                {'name': 'Van', 'total_cost': 190},
+                {'name': 'Lorry', 'total_cost': 210},
+                {'name': 'Barge', 'total_cost': 200}
+            ]
+        self.assertEqual(cheapestVehicle.getCheapestVehicle(vehicles), {'name': 'Van', 'total_cost': 190})
 
-        listOfVehicles = [
-            {'name': 'Van', 'cost': 200},
-            {'name': 'Lorry', 'cost': 190},
-            {'name': 'Barge', 'cost': 220}
-        ]
-        self.assertEqual(cheapestVehicle.getCheapestVehicle(listOfVehicles), {'name': 'Lorry', 'cost': 190})
+        vehicles = [ 
+                {'name': 'Van', 'total_cost': 250},
+                {'name': 'Lorry', 'total_cost': 200},
+                {'name': 'Barge', 'total_cost': 210}
+            ]
+        self.assertEqual(cheapestVehicle.getCheapestVehicle(vehicles), {'name': 'Lorry', 'total_cost': 200})
         
-        listOfVehicles = [
-            {'name': 'Van', 'cost': 200},
-            {'name': 'Lorry', 'cost': 220},
-            {'name': 'Barge', 'cost': 190}
-        ]
-        self.assertEqual(cheapestVehicle.getCheapestVehicle(listOfVehicles), {'name': 'Barge', 'cost': 190})
+        vehicles = [ 
+                {'name': 'Van', 'total_cost': 250},
+                {'name': 'Lorry', 'total_cost': 210},
+                {'name': 'Barge', 'total_cost': 200}
+            ]
+        self.assertEqual(cheapestVehicle.getCheapestVehicle(vehicles), {'name': 'Barge', 'total_cost': 200})
