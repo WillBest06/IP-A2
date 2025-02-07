@@ -1,6 +1,6 @@
 import cheapestVehicle, wordReplacement
 
-print('Select an option:')
+print('\nSelect an option:')
 print('1) Find the cheapest transport vehicle')
 print('2) Replace words in text files')
 

@@ -18,6 +18,7 @@ class testCheapestVehicle(unittest.TestCase):
         self.assertEqual(cheapestVehicle.calcVehicleCost(100.44, 47, 78, 1, 0.4074), 50.16)
 
     def testGetCheapestVehicle(self):  
+        # van is cheapest
         vehicles = [ 
                 {'name': 'Van', 'total_cost': 190},
                 {'name': 'Lorry', 'total_cost': 210},
@@ -25,6 +26,7 @@ class testCheapestVehicle(unittest.TestCase):
             ]
         self.assertEqual(cheapestVehicle.getCheapestVehicle(vehicles), {'name': 'Van', 'total_cost': 190})
 
+        # lorry is cheapest
         vehicles = [ 
                 {'name': 'Van', 'total_cost': 250},
                 {'name': 'Lorry', 'total_cost': 200},
@@ -32,6 +34,7 @@ class testCheapestVehicle(unittest.TestCase):
             ]
         self.assertEqual(cheapestVehicle.getCheapestVehicle(vehicles), {'name': 'Lorry', 'total_cost': 200})
         
+        # barge is cheapest
         vehicles = [ 
                 {'name': 'Van', 'total_cost': 250},
                 {'name': 'Lorry', 'total_cost': 210},
